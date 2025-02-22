@@ -1,0 +1,13 @@
+version: '3.8'  # Always specify a Docker Compose version
+
+services:
+  react-app:
+    build: ./Frontend  # No need for a trailing slash
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./Frontend:/app  # Mount only the frontend directory, not the whole project
+      - /app/node_modules  # Avoid conflicts with local dependencies
+    stdin_open: true
+    tty: true
+    container_name: react-container  # Specify a container name
